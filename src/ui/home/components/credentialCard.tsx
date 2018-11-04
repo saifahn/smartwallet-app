@@ -77,14 +77,15 @@ export class CredentialCard extends React.Component<Props, State> {
     const { defaultContainerStyle } = this.getStyles()
 
     return (
-      <View style={[StyleSheet.flatten(defaultContainerStyle), containerStyle || {}]}>
+      <View style={[StyleSheet.flatten(defaultContainerStyle), containerStyle || {}]}
+            onTouchEnd={this.props.handleInteraction}>
         <View flex={0.2} alignItems={'center'}>
           {leftIcon}
         </View>
         <View onTouchEnd={this.toggleCollapse} flex={0.7} overflow={'scroll'}>
           {collapsed ? this.renderCollapsedClaim(credentialItem) : this.renderClaim(credentialItem)}
         </View>
-        <View flex={0.1} onTouchEnd={this.props.handleInteraction}>
+        <View flex={0.1}>
           {rightIcon || null}
         </View>
       </View>
